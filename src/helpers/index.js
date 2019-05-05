@@ -3,14 +3,14 @@ class EventEmitter {
     this.events = {};
   }
 
-  on(type, cb) {
+  on(type, listener) {
     this.events[type] = this.events[type] || [];
-    this.events[type].push(cb);
+    this.events[type].push(listener);
   }
 
   emit(type, arg) {
     if (this.events[type]) {
-      this.events[type].forEach(cb => cb(arg));
+      this.events[type].forEach(listener => listener(arg));
     }
   }
 }

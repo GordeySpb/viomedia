@@ -1,0 +1,36 @@
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 80%;
+  margin-bottom: 50px;
+}
+
+.info__item {
+  display: flex;
+  align-items: flex-start;
+  width: 90%;
+}
+
+.info__img {
+  margin-right: 30px;
+  width: 100%;
+}
+
+.info-block {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.info__title {
+  margin-bottom: 5px;
+}
+
+.info__date {
+  margin-bottom: 5px;
+}
+
+.info__name {
+  margin-bottom: 5px;
+}
