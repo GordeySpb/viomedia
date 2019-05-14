@@ -9,6 +9,11 @@ export default class View extends EventEmitter {
     this.list = document.querySelector('.list');
     this.item = document.querySelector('.info');
     this.list.addEventListener('click', e => this.getItemId(e));
+    document.addEventListener('DOMContentLoaded', () => this.loadWindow());
+  }
+
+  loadWindow() {
+    this.emit('load:window');
   }
 
   addItems(items) {
@@ -19,7 +24,7 @@ export default class View extends EventEmitter {
   getItemId(e) {
     if (e.target.closest('li')) {
       const id = e.target.closest('li').getAttribute('data-id');
-      this.emit('id', id);
+      this.emit('get:id', id);
     }
   }
 

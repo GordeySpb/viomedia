@@ -1,4 +1,5 @@
 import EventEmitter from './helpers/index';
+import UnsplashAPI from './API/unsplashAPI';
 
 export default class Model extends EventEmitter {
   constructor() {
@@ -6,16 +7,20 @@ export default class Model extends EventEmitter {
 
     this.APIkey =
       '5b8bff2ea344464b4a1bb1eaac126aa3ef8ea3ff25c7e5655c13b9c799c22611';
-    this.state = { items: [] };
+    this.state = {
+      items: null,
+      item: null,
+    };
+    this.unsplashAPI = new UnsplashAPI();
+
     this.on('data:fetched', data => {
       this.setItems(data);
       this.emit('data:fetched:final');
     });
-    this.fetchData();
   }
 
   setItems(data) {
-    this.state.items = [...this.state.items, ...data];
+    this.state.items = [...data];
   }
 
   getItems() {
@@ -23,13 +28,9 @@ export default class Model extends EventEmitter {
   }
 
   fetchData() {
-    fetch(
-      `https://api.unsplash.com/search/photos?&query=office&client_id=${
-        this.APIkey
-      }`
-    )
-      .then(res => res.json())
-      .then(({ results }) => this.emit('data:fetched', results));
+    this.unsplashAPI
+      .getPhoto()
+      .then(result => this.emit('data:fetched', result));
   }
 
   setCurrentItem(itemId) {
