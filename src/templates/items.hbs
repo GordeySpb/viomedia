@@ -1,6 +1,10 @@
 {{#each items}}
-  <li class="list__item" data-id="{{id}}">
-    <img src="{{urls.small}}" alt="pic" class="list__img">
-    <span class="list__title">{{description}}</span>
-  </li>
+  <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="card shadow-sm mx-auto mb-4 h-90 text-center" data-id="{{id}}">
+      <img class="card-img-top" src="{{urls.small}}" alt="Card image cap">
+      <div class="card-body bg-primary text-white">
+        <p class="card-text">{{alt_description}}</p>
+      </div>  
+    </div>
+  </div>
 {{/each}}

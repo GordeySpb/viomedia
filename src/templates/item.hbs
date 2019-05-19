@@ -1,4 +1,4 @@
-<div class="info__item" data-id="{{item.id}}">
+{{!-- <div class="info__item" data-id="{{item.id}}">
   <img src="{{item.urls.small}}" alt="pic" class="info__img">
   <div class="info-block">
     <span class="info__title">Description: {{item.alt_description}}</span>
@@ -6,5 +6,17 @@
     <span class="info__name">User Name: {{item.user.name}}</span>
     <span class="info__user-name">Nick Name: {{item.user.username}}</>
   </div>
-
+</div> --}}
+<div class="row justify-content-center">
+  <div class="col col-sm-8">
+    <div class="card text-left shadow-sm mb-4" data-id="{{item.id}}">
+      <img src="{{item.urls.small}}" class="card-img-top" alt="pic">
+      <div class="card-body card-body--single bg-dark text-white">
+        <p class="card-description">Description: {{item.alt_description}}</p>
+        <p class="card-date">Created: {{item.created_at}}</p>
+        <p class="card-user">User Name: {{item.user.name}}</p>
+        <p class="card-nick pb-10">Nick Name: {{item.user.username}}</p>
+      </div>
+    </div>
+  </div>
 </div>

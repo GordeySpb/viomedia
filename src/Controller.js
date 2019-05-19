@@ -5,7 +5,7 @@ export default class Controller extends EventEmitter {
     super();
     this.model = model;
     this.view = view;
-    this.view.on('load:window', () => this.model.fetchData());
+    this.view.on('load:window', () => this.model.fetchData(model));
     this.model.on('data:fetched:final', () => this.onFetch());
     this.view.on('get:id', id => this.addItem(id));
     this.model.on('set:item', () => this.addCurrentItem());

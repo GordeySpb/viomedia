@@ -4,9 +4,6 @@ import UnsplashAPI from './API/unsplashAPI';
 export default class Model extends EventEmitter {
   constructor() {
     super();
-
-    this.APIkey =
-      '5b8bff2ea344464b4a1bb1eaac126aa3ef8ea3ff25c7e5655c13b9c799c22611';
     this.state = {
       items: null,
       item: null,
@@ -20,7 +17,8 @@ export default class Model extends EventEmitter {
   }
 
   setItems(data) {
-    this.state.items = [...data];
+    const items = [...data];
+    this.state = { items };
   }
 
   getItems() {
@@ -35,7 +33,7 @@ export default class Model extends EventEmitter {
 
   setCurrentItem(itemId) {
     const item = this.state.items.find(({ id }) => id === itemId);
-    this.state.item = item;
+    this.state = { ...this.state, item };
     this.emit('set:item');
   }
 
